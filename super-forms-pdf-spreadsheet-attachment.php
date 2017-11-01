@@ -347,7 +347,9 @@ if(!class_exists('SUPER_PDF_XLSX_Attachment')) :
                         ini_set('display_errors', TRUE);
                         ini_set('display_startup_errors', TRUE);
                         date_default_timezone_set('Europe/London');
-                        define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+                        if (!defined('EOL')) {
+                            define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+                        }
 
                         if( !class_exists( 'PHPExcel_Settings' ) ) {
                             include_once( 'classes/PHPExcel/Settings.php' );
