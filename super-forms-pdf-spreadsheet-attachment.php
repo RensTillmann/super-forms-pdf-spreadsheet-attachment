@@ -323,7 +323,7 @@ if(!class_exists('SUPER_PDF_XLSX_Attachment')) :
                             $extension = '.pdf';
                             if( $data['settings']['pdf_xlsx_pdf_library']=='tcPDF' ) {
                                 if( !class_exists( 'TCPDF' ) ) {
-                                    require_once( 'lib/tcpdf/tcpdf.php' );
+                                    require_once( 'vendor/tcpdf/tcpdf.php' );
                                 }
                             }
                         }
@@ -442,11 +442,11 @@ if(!class_exists('SUPER_PDF_XLSX_Attachment')) :
                     'pdf_xlsx_pdf_library' => array(
                         'name' => __( 'Choose your preferred PDF rendering library', 'super-forms' ), 
                         'label' => __( 'The different libraries have different strengths and weaknesses. Some generate better formatted output than others, some are faster or use less memory than others, while some generate smaller .pdf files. It is the developers choice which one they wish to use, appropriate to their own circumstances.', 'super-forms' ), 
-                        'default' => SUPER_Settings::get_value( 0, 'pdf_xlsx_pdf_library', $settings['settings'], 'tcPDF' ),
+                        'default' => SUPER_Settings::get_value( 0, 'pdf_xlsx_pdf_library', $settings['settings'], 'mPDF' ),
                         'type' => 'select',
                         'values' => array(
-                            'tcPDF' => __( 'TCPDF library (default)', 'super-forms' ),
-                            'mPDF' => __( 'mPDF library ', 'super-forms' ),
+                            'mPDF' => __( 'mPDF library (default)', 'super-forms' ),
+                            'tcPDF' => __( 'TCPDF library', 'super-forms' ),
                             'DomPDF' => __( 'Dompdf library', 'super-forms' ),
                         ),
                         'filter'=>true,
