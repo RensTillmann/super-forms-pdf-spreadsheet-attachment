@@ -164,7 +164,7 @@ if(!class_exists('SUPER_PDF_XLSX_Attachment')) :
         /**
          * Display activation message for automatic updates
          *
-         *  @since      1.8.0
+         *  @since      1.0.0
         */
         public function display_activation_msg() {
             if( !class_exists('SUPER_Forms') ) {
@@ -187,7 +187,7 @@ if(!class_exists('SUPER_PDF_XLSX_Attachment')) :
         /**
          * Automatically update plugin from the repository
          *
-         *  @since      1.1.0
+         *  @since      1.0.0
         */
         function update_plugin() {
             if( defined('SUPER_PLUGIN_DIR') ) {
