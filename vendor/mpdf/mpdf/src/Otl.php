@@ -1184,7 +1184,7 @@ class Otl
 				}
 				$newchar_data[$ectr] = ['bidi_class' => $this->schOTLdata[$sch][$i]['bidi_type'], 'uni' => $this->schOTLdata[$sch][$i]['uni']];
 				$newgroup .= $this->schOTLdata[$sch][$i]['group'];
-				$e.= UtfString::code2utf($this->schOTLdata[$sch][$i]['uni']);
+				$e .= UtfString::code2utf($this->schOTLdata[$sch][$i]['uni']);
 				if (isset($this->mpdf->CurrentFont['subset'])) {
 					$this->mpdf->CurrentFont['subset'][$this->schOTLdata[$sch][$i]['uni']] = $this->schOTLdata[$sch][$i]['uni'];
 				}
@@ -4943,7 +4943,7 @@ class Otl
 		$cctr = 0;
 		$rtl_content = 0x0;
 		foreach ($chardata as $cd) {
-			$e.=code2utf($cd['char']);
+			$e .= UtfString::code2utf($cd['char']);
 			$group .= $cd['group'];
 			if ($useGPOS && is_array($cd['GPOSinfo'])) {
 				$GPOS[$cctr] = $cd['GPOSinfo'];
@@ -5616,7 +5616,6 @@ class Otl
 			}
 		}
 
-
 		// L2. From the highest level found in the text to the lowest odd level on each line, including intermediate levels not actually present in the text, reverse any contiguous sequence of characters that are at that level or higher.
 		for ($j = $maxlevel; $j > 0; $j--) {
 			$ordarray = [];
@@ -5651,8 +5650,6 @@ class Otl
 		$content = [];
 		$cOTLdata = [];
 		$chunkorder = [];
-
-
 
 		$nc = -1; // New chunk order ID
 		$chunkid = -1;
@@ -5785,7 +5782,7 @@ class Otl
 
 	public function trimOTLdata(&$cOTLdata, $Left = true, $Right = true)
 	{
-		$len = count($cOTLdata['char_data']);
+		$len = $cOTLdata['char_data'] === null ? 0 : count($cOTLdata['char_data']);
 		$nLeft = 0;
 		$nRight = 0;
 		for ($i = 0; $i < $len; $i++) {
